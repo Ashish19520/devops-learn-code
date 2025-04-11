@@ -1,0 +1,39 @@
+installing mysql
+
+1. Initial Permission Issues
+You first tried to install packages as a regular user (admin1) without sudo, which caused permission errors. You correctly switched to root with sudo -i.
+
+2. MySQL Installation Problems
+The apt upgrade revealed issues with MySQL:
+
+bash
+Copy
+# Remove problematic MySQL packages
+
+apt purge mysql-server mysql-server-8.0
+apt autoremove
+
+# Clean up any remaining files
+
+rm -rf /var/lib/mysql
+rm -rf /etc/mysql
+
+# Then reinstall MySQL if needed
+
+apt update
+apt install mysql-server -y
+apt install nginx -y
+
+bash
+Copy
+# Fix broken packages
+apt --fix-broken install
+
+# Clean package cache
+apt clean
+apt update
+
+
+user ->ashish
+password->Shivam
+

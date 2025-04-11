@@ -1,0 +1,85 @@
+step one->create a filename with  dockerfile
+touch dockerfile
+
+FROM node : latest
+COPY ..
+RUN npm install
+EXPOSE 3000
+CMD ["node","index.js"]
+
+
+
+for creating a build in docker use 
+
+docker build -t basic-app .
+
+
+ignoring the file 
+use .dockerignore to ignore the files
+
+example entry of .dockerignore->dummy.txt
+				 node-module
+				 .txt   ->this will ignore all files with .txt extension
+				 
+				 
+delete operation from command lines for image and container
+
+docker image rm basic-app 
+docker container rm basic -app -f
+use -f for force delete if image is used by some container
+
+docker image rm basic-app -f
+
+also we can delete it from docker-desktop
+
+
+docker system prune -a   -> this will delete all the versions and contaners
+
+docker build -t basic-app:v2   -> this will add a tag of v2 in front of basic-app img -> also known as vesioning
+
+command to run docker from terminal
+
+docker run --name basic-app-v2 -p 3000:3000 basic-app:v2 
+	
+	
+with help of volumes if we change something in our project that will automatically reflects on the container
+
+FROM node : latest
+RUN npm install -g nodemon
+WORKDIR /app
+COPY ..
+RUN npm install
+EXPOSE 3000
+CMD ["npm","run","dev"]
+
+docker run --name basic-container -p 3000:3000 --rm -v /Users/ashish/desktop/gsmarena/basic-app:/app basic-app   this will create a build with volume that will reflect changes on every single edit
+
+to create a set of instructions we need a yaml file when our code base grow and we have a lot of commands to run so we create a compose.yaml file
+
+
+services:
+	img:
+		build: .
+		container_name: basic-container
+		ports:- 5500:5500
+
+docker hub-> it is the world largest library and community for docker images
+we can create a repository here like in github and push our build image and use it anywhere across the globe
+after signin up u get a link and to push like
+docker push anilsidhu/node-yt-app:tagname 
+
+
+use ->docker images to get all images in ur system
+
+step-1->first login on browser and in terminal run command 
+docker login-> this will login on docker hub in ur system or use command search on web with loginid and passowrd use stackoverflow
+
+if you see error of storing credintioal 
+echo '{"credsStore":"desktop"}' > ~/.docker/config.json
+
+docker login --username ashish19520
+
+
+docker push anilsidhu/node-yt-app-> this will push the code in docker repo
+docker pull anilsidhu/node-yt-app  -> use this command to pull from docker hub
+
