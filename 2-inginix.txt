@@ -143,3 +143,207 @@ server {
 }
 
 so now 80 is redirect to locahost:3000
+
+
+
+########### configuring alias  ############
+
+suppose we run localhost a webiste and if it adds/blog we are going to redirect them on another webiste
+
+
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        server_name _;
+
+        location / {
+            root /home/admin1/Desktop/mylearn;
+            index index.html index.htm index.nginx-debian.html;
+
+                proxy_pass       "http://localhost:3000";
+
+
+        }
+
+        location /about{                                       ->here we pass a route to the page in case here it is /about
+            alias /home/admin1/Desktop/mydev;                   we have to paass directory and directory take the the index file decribe on below line
+            index index.html index.htm index.nginx-debian.html;   and we have to start alias in case of using alias
+                we can do a deep nested also
+        }
+
+}
+
+ location /about{                                      
+            alias /home/admin1/Desktop/mydev;
+            index index.html index.htm index.nginx-debian.html;
+        }
+
+
+########    nginix authentication  ##################
+
+sudo apt-get-update -y
+
+we insatall php-web server to make the password based authentication it provide a built-in
+
+sudp apt-get install apache2-utils
+sudo htpasswd -c /etc/nginx/.htpasswd nginx   ->this will create a .htpasswd file in the /etc/nginx  that store secret passwd last nginx keyword is for user 
+
+here id-nginx
+passwd ->pasword u enter
+
+to check if password available on .passwd file run
+
+cat /etc/nginx/.htpasswd
+
+then we change virtual configuration of nginx server and put the password
+
+then paste those files in ypur devops/devops file it is a path changed file
+
+auth_basic "Private Property";
+auth_basic_user_file /etc/nginx/.htpasswd; 
+
+
+
+
+to off password authentication for a file use auth_basic off;
+
+
+#### removing ngix ######
+
+sudo apt-get-update -y
+sudo apt-get remove nginx
+sudo apt-get purge nginx
+sudo apt-get autoremove
+sudo apt-get remove nginx nginx-common
+sudo apt-get purge nginx nginx-common
+sudo apt-get autoremove
+
+
+to add proxy in nginx 
+
+
+in the http folder we can create a server block or a upstream block;
+
+upstream backend{
+        server localhost:3000;   ->server ip or port no
+}
+
+server{
+        listen 80;
+        root /var/www/dev;
+
+        server_name test_proxy_pass;
+
+        location / {
+                proxy_pass http://backend;       ->don;t confuse with backend it is the name of upstream
+        }
+
+}
+
+
+
+
+to run mutiple instane of a service, declare a  PORT variable on linux than Start
+
+PORT=8000 node index.js
+PORT=8001 node index.js this will bind this port number to this proceess
+
+
+to add load balancer 
+
+upstream backend{
+        server localhost:3000 weight=3 down;
+        #down means serveris down now
+        #when we add weight =3 now 3 request concurrently handle by first server than second then 3 by first if u want u can remaove weight 
+        #->server ip or port no
+        server localhost:3001 backup; 
+        #when u write backup in the front of serever it is treated as a backup server and all request is gone to first server or main server when the first server goes down then the second server came in picture 
+        #->add one more server into it
+}
+
+server{
+        listen 80;
+        root /var/www/dev;
+
+        server_name test_proxy_pass;
+
+        location / {
+                add_header Cache-Control no-store
+                proxy_pass http://backend;       
+                #don;t confuse with backend it is the name of upstream
+        }
+
+}
+
+
+
+
+data for cafe codergyan  server
+
+server{
+        listen 80 default_server;
+        server_name cafe.gyan.com;
+
+        auth_basic "Private Property";
+        auth_basic_user_file /etc/nginx/.htpasswd;
+
+        location /{
+        auth_basic off;
+        root /home/admin1/Desktop/mylearn/build;
+        index index.html index.htm index.nginx-debian.html;
+         try_files $uri $uri/ =404;
+    }
+
+         location /about{
+            alias /home/admin1/Desktop/mydev;
+            index index.html index.htm index.nginx-debian.html;
+        }
+
+}
+
+
+
+
+
+
+when u deploying a react project react use client side routing so when we select a route and refresh the page it domain/about
+-> it show the 404 error so we have to make a setting in nginx that if a request came on any of the route u shoul have to saw them the home route or index page
+
+
+ location /{
+        auth_basic off;
+        root /home/admin1/Desktop/mylearn/build;
+        index index.html index.htm index.nginx-debian.html;
+         try_files $uri $uri/ /index.html;
+    }
+
+ to make http to https for port 443 
+ we have to do tls configuration   
+ u can use a free or premium ssl certificate from web  we use certbot
+
+ sudo apt update
+ apt apt install snap
+ sudo snap install core 
+ sudo snap refresh core
+ sudo snap install --classic certbot
+ sudo ln -s /snap/bin/certbot /usr/bin/certbot
+ sudo certbot --nginx
+ sudo certbot certonly --nginx
+ for localhost use self-signed certificates
+
+
+
+ if u are using web sockets use this
+    server {
+        listen 8020;
+        location / {
+            proxy_pass http://websocket;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;             ->below three lines
+            proxy_set_header Connection $connection_upgrade; 
+            proxy_set_header Host $host;
+        }
+    }   
+
+

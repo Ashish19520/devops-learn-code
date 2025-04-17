@@ -1,0 +1,23 @@
+nignx is a webserver 
+we can use nginx for cashing, gateway ,hosting static pages, host multiple website ,tls termination,load balancer and as areverse_proxy
+
+
+external applications ka sara data dependecy or configuration etc/ files me jata hai
+
+recommended server block in conf.d folder create all server block files and validate from here 
+
+if we restart or stop than start nginix we are going to see a downtime
+
+so we are going to use relaod command it prevents ngnix from starting again it just simply load the changed configuration
+
+there can be n number of domain and we can create a new server block for each domain and the static content
+
+server block is also known as virtual box or
+
+
+agr hum /blog krte hai or humare provide kraye hue server-block me route nhi hai to 404 dihega
+
+or agr blog name ki same file present hai blog.html to hum use serve kra skte hai rootpat/blog.html krke
+
+when  u create server block make sure u make dns matching
+make all conf file with .conf externsions
