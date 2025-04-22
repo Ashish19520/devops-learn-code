@@ -1,0 +1,41 @@
+installing docker
+
+intall docker according to your os
+to check which images are present use command
+ 
+ to pull from registry or known as docker hub use command -->
+
+->docker pull nginx
+->docker images   ->or visit to docker desktop
+
+to run an image run command 
+docker run nginx:latest  ->. this may hang the process so use
+
+docker run -d nginx:latest   ->d stand for detech mode
+
+docker run -d -p 8080:80 node:latest   ->map docker port to machine port
+docker run -d -p 8080:80 -p 3000:80 node:latest   ->both port 8080 and 3000 now serves nginx
+
+docker container ls ->to see list of all running containers 
+docker ps -a to list out all containers
+
+to delate a container use 
+docker rm <id>   ->id of the container process 
+use docker ps -a to get id of all the containers
+
+
+
+
+################## VOLUMES #################
+
+docker volumes allowed us to share data that could be a file or folder b/w host and container
+and also b/w containers
+
+
+docker run --name static-content -v $(pwd):/usr/share/nginx/html:ro -d -p 8080:80 nginx
+ this command creates a contaier of nginx with name static-content that serves the index.html file present in the pwd and map to nginx static website
+ and if you change the index file the component will mounted automatic which is defult behaviour of nginx.
+
+
+
+ docker exec -it static-content  - > this command open the container in an interactive mode

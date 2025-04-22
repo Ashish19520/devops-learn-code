@@ -1,0 +1,28 @@
+virtaul machines
+
+we use an hypervisor to create a virtual machines
+two types of hypervisour are
+
+bare-matel ->run directly on hardware
+hosted   -> run on top of the operating system
+
+
+
+###### cloud computing #####
+
+on demand delivery of it resources over the internet with pay-as-you-go pricing.
+
+
+#### types of cloud computung###
+ 
+1. IAAS    ->you are given with a bland server all responsiblities are yours what ypu need to do
+2. PAAS     -> ypu get a machine with all the nesseaccery things that ypu need to run ypur softwarw
+3. SAAs   -> just use the software without downloading like we use excel earlier now we use google sheets
+
+
+##### types of cloud ######
+
+
+public    a shared infratructure like aws
+private   a private network for organizations with more privacy or control 
+hybrid   mix of public and private allowing data and applictions to move in b/w for them for flexibility
