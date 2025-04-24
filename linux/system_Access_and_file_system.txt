@@ -1,0 +1,14 @@
+linux is mostly cli
+case_Sensitive
+avoid spaces
+a root user which can modify users and access permisisons
+
+any thing start with
+
+d -> directory
+l -> link
+- -> simple text file
+c -> special file or device
+s -> Socket
+p -> Named Pipe
+b -> Block device

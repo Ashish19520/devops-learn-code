@@ -1,0 +1,24 @@
+we use cli to automated tasks and automated repaeated tasks so we don;t need to present there manually
+
+download aws cli to access all aws commands use
+
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    sudo ./aws/install
+
+now go on iam user and create a secret key for the console login to sign in console
+use
+
+aws configure
+
+aws iam list-users -> use this command to get access of the allusers
+
+best practises ->
+1->Avoid using root account expect of account setup
+2->add users to a group and assigns permissions to a group
+3->use password policy or MFA
+4->USe Access Keys for Cli/SDK
+5->don;t share access key or password
+6->Audit the permissions using iam credintials report
+
+https://415407092979.signin.aws.amazon.com/console use this link to login to console

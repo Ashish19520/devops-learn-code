@@ -1,3 +1,27 @@
 #### IAM ####
 
 Identity And Access Management
+
+
+it is a service that helps you securly control access to Aws resources
+
+
+allows u to manage user,roles,permissions to define who can access what within ur aws environment
+
+
+1-> it is a free service
+2->Root account create by default shoud't used or shared
+
+
+
+Group - if there are multiple users  which needs same type of permisions intead of giving them individula add them into a group and apply permisisons to the group
+
+
+we see how tocreate user
+grops
+role
+mfa for root user 
+
+
+
+explore it a little bit

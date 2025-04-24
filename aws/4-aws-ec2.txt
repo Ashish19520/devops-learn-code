@@ -1,0 +1,17 @@
+ec2 or amazon elastic compute cloud is a cloud service that provides resizable virtual servers,
+called instances which you can use to run the applications
+
+in this u have to decide 
+
+OS
+RAM
+CPU
+Disk space
+Network/Firewall
+how to acees the machine
+
+
+
+##########  Security groups ######
+
+network firewall rule that control inbound and outbound traffic for instances

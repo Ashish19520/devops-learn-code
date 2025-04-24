@@ -39,3 +39,158 @@ docker run --name static-content -v $(pwd):/usr/share/nginx/html:ro -d -p 8080:8
 
 
  docker exec -it static-content  - > this command open the container in an interactive mode
+
+
+ ###############  create new docker image and run up the container ##########################
+
+ to see images us
+
+docker images ls  -> this will show all the images in the docker
+
+step 1-> first create a docker file with name Dockerfile 
+
+
+when we creatng an image we are not going to create the image from scratch we are taking a base image from registry
+
+
+FROM nginx:latest
+ADD . /usr/share/nginx/html    ->this will add all current repo to the nginx path basic to create an image for serving static conternt
+
+
+basic docker file for nextjs
+
+FROM node:18  
+WORKDIR /app  
+COPY package*.json ./  
+RUN npm install  
+COPY . .  
+RUN npm run build  
+EXPOSE 3000  
+CMD ["npm", "start"]  
+
+docker build -t your-image-name .  
+docker run --rm -p 3000:3000 --name <container-name> <image-name>
+
+
+    we create a repo see on github with nginx docker react and express
+
+#######   ingoring something ######
+
+create a .dockerignore file to to ignore something in root of the project directrory
+
+node_modules      --->>now this directory is ignored 
+Dockerfile
+.git
+*.txt            -> ignore all for    txt this is a wildcard *
+
+
+
+when we add a change in the source cod edocker ehas to execut all the commands agian of Dockerfile to handle
+this we can use caching
+
+
+FROM node:latest
+WORKDIR /app
+ADD package*.json /.         ->we change steps and add this line and take source code line below npn istall this would create at tremendous effect it 
+RUN npm install                     now if we build again because our package is not change no need to install it again simply it add cache for package.json phle ye nhi tha code upr tha to use lga agr kuch dependecy dali ja skti hai to vo dobara install krta tha leking ab nhi    
+ADD . . 
+CMD node index.js
+
+
+
+#####  Alpine ##############
+
+apine linux is an independent non-commercial general-purppose designed to power users who appericiate security simplicity and resoure efficiency
+
+
+first check on the registry if the image is supportiung alpine or not and if it supports
+
+docker pull node:lts-alpine      now a image ius full of almost 15% of the basic node image
+
+and when ypu are creating use 
+
+#### alpine istead of lts
+FROM node:alpine
+
+
+
+#############  tags ,versoining and Tagging   ##########################33
+
+FROM node:20.0.0-alpine     this will add 20th version of node
+
+
+if you use same tag for a website on buliding it will override the previous one and previous one start showing none
+
+docker tag website:latest  website:1
+
+
+this command create a new image with tag 1 from website and we don't override previous one so we have access to both
+
+docker tag website:1 website:2
+
+now we create a tag 2 from website one like we cut a branch from main
+
+and we can run with tag names also
+
+docker run --name website-a -p 5000:5000 -d website:latest 
+
+#### the above command create and run a new container from website:latest image and name them website-ab
+
+
+used docker login to login on docker hub or use whale icon right corner above
+
+You're getting the error:
+
+```
+denied: requested access to the resource is denied
+```
+
+This happens because you're trying to push a Docker image to Docker Hub, but:
+
+1. **You're not authenticated to Docker Hub**, or
+2. **You're trying to push to a repository you don't have permission to**, or
+3. **You didn’t tag the image correctly with your Docker Hub username.**
+
+---
+
+### ✅ How to Fix It:
+
+Let’s walk through the correct steps:
+
+#### 1. **Login to Docker Hub:**
+
+```bash
+docker login
+```
+
+Enter your **Docker Hub username** and **password** (or personal access token if 2FA is enabled).
+
+---
+
+#### 2. **Tag your image properly:**
+
+Assuming your Docker Hub username is `ashish19520` and the image name is `my-nodejs-app`, run:
+
+```bash
+docker tag my-nodejs-app:latest ashish19520/my-nodejs-app:latest
+```
+
+---
+
+#### 3. **Push the tagged image:**
+
+```bash
+docker push ashish19520/my-nodejs-app:latest
+```
+
+---
+
+### 💡 Extra Tip:
+
+To verify all images and tags locally:
+
+```bash
+docker images
+```
+
+Let me know if you want help with creating or tagging the image as well!
