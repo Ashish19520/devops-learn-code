@@ -1,0 +1,45 @@
+docker run -it node   ->this will open an interactive mode for us or nodejs temrinal
+images take a snap of existing code and it is a read only
+
+
+images are layers based and only that layers are run which ypu change
+and if one layer changes all subsequent layers get executed
+
+
+Attached and deattached container
+
+when we restart a container the process is deattached in command line
+but when we start the container first it run in attached mode to the command line
+
+use -d to run in detached mode while creating a new image
+
+suppose we have to input something from terminal if we run this in deattached mode we face error 
+suppose taking two numbers from user and show the sum 
+
+so we use -it interactive terminal mode
+also use  -a means attached mode
+
+you can add -rm command while running the container and this wiol automatically remove the container when container goes down
+
+docker run -p 3000:80 -d -rm hello-node
+
+copy command allows you to add or extract something from a running or stop container to local machine
+
+#########   docker cp dummy/hello.txt  my-node-app:/hello   
+
+above is the docker copy command that take source and destination and copy source to destination folder and rate a new one if folder does't exist
+without restart or stop the container
+
+### tags ####
+
+docker run -p 3000:80 -d -rm --name hello-node-container -> this will add a tag to container hello -node container
+
+for images it is break in two a name and a tag
+ex-> node:18
+    node:latest
+    here node is a name of repository and 18,latest alpine all are tags
+    that means a repository can have multiple images
+
+    to create use
+
+######  docker built -t node-app/todolist

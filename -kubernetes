@@ -1,0 +1,32 @@
+it is an open source system for automating deployment, scaling and management of containarized applications
+
+we can not use cloud provide container manamgement tool like
+ECS in aws because we are getting locked into the service
+
+so here kubernetes cam into picture
+
+it is an open source system for
+orchestrating container deployments
+
+k8 help us in monitoring
+1->automatic deployments
+2->Scanling and load balancing
+3->Management
+it can be used any cloud proider
+
+### Archeticture of kubernets
+
+1-one worker node that contains your container ->
+2-pod that is a abstraction on container ->they can contain multiple containers but the one is at least the can
+3-and proxy that is an abstraction on pod that contains inbound and outbound traffic
+
+and you can contaner scaling if ypur application is going big
+
+to contro all the worker nodes like auto scalling removing run and restart
+
+there is a master node whict is on top of all these
+master node contain various component which help with managing theworker nodes
+
+together all they form a cluster
+
+see the picture kubernets-worker-node for understand worker
