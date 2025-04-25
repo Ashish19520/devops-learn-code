@@ -15,3 +15,15 @@ how to acees the machine
 ##########  Security groups ######
 
 network firewall rule that control inbound and outbound traffic for instances
+
+
+####### accessing ec2 remotely #########
+
+
+go to ec2 instances running dashboard click on connct u can connect manually throgh ec2 console or u can do it with ssh client
+
+chmod 400 your-key-file.pem
+ssh -i your-key-file.pem ec2-user@<public-ip-address>
+
+ssh -i Downloads/ashishweb-server.pem ec2-user@56.228.14.198   ->this will work
+
