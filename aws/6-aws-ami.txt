@@ -1,0 +1,16 @@
+AMI  -> amazon machine image
+
+ami is  a machine image is a pre-configured template that provide the necessary information to launch an ec2 instance in ashishweb
+
+->operating system
+->web server
+->pre installed software and configuration
+
+
+types of ami
+
+public 
+
+private ami
+
+paid ami / marketplace ami

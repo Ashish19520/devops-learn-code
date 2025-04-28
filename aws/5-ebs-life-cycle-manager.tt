@@ -1,0 +1,8 @@
+Amazon data lifecyle manager    ->part of the ebs
+
+automate the creation retention copy of deletion of snapshors and ami
+
+
+
+snaphshot is something like we have to take backup of data on a daly basis  so there we need data life cycle manager
+free of cost
