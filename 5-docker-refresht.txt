@@ -43,3 +43,42 @@ ex-> node:18
     to create use
 
 ######  docker built -t node-app/todolist
+
+
+####### to check the logs of a running continer use
+
+-> docker logs running-container-name
+
+
+   #### volumes ####
+    
+
+    two types are there named and anonyms
+    anoynms are manage by dokcer they are delete when we stop a container
+    but named are managed by us 
+
+    we can persist the data in our host machine from docker-container
+
+    to do use
+
+    -> docker run -d -p 3000:80 --rm --name feedback-app -V feedback:/app/feedback feedback-node:volumes
+
+                                                       | v form volume and feedback is the folder of host machine   |  name of iamge    
+                                                        and  app/feedback is the folder created in running container
+
+###########  BIND MOUNTS ###########  RUNNING FOR DEVELOPMENT #####
+
+generally we take a snapshot of the code for image and if we change something in development we have to rebuild eerything
+
+in bind mounts localhost project code dominate the code in th container
+
+
+
+###->>>  docker run -d --rm -p 3000:80 --name feedback-app -v feedback:/app/feedback -v $(pwd):/app feedback-node:volumes
+
+
+now with the above comand internal code start overide container code what we change in internal node code in html 
+is start refleccting in docker runing container
+
+
+for nodejs specific development container we use nodemon in devdependiceies and change the docker script
