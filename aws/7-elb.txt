@@ -1,0 +1,27 @@
+ELB-> elastic Load Balancing
+
+scalability-> vertical, horizontal.
+
+availability-> less downtime so website is highly accessable to the users
+
+
+elasticity->elasticity means the ability to automatically adjust resources as the demand changes
+adding more  when needed and removing when its no longer available
+
+ex-ASG -> auto scaling group
+
+we launch two instance and on left sidebar of ec2 there is load Balancing and choose load balancer
+
+
+
+
+###### Auto scaling Group ########
+ASG
+it is a service that automatically add or delete ec2 instance based on load and traffic
+
+scaleup when more capacity is needed and down when capacity is less
+
+replace unhealthy instance automatically to ensure relaibility
+
+u can set rules for scaling based on cpu usage or request count
+

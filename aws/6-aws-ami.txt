@@ -14,3 +14,9 @@ public
 private ami
 
 paid ami / marketplace ami
+
+
+
+GO TO IMAGES AND AMI
+
+IN AMI CATALOG YOU CAN CHOOSE THE IMAGES
