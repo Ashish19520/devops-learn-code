@@ -47,3 +47,23 @@ see the picture kubernets-worker-node for understand worker
     curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 
 
+
+
+use ->
+minikube status -> to check the status
+minikube start   -> to start the cluster again
+#########################################   kubernetes work ###########################
+
+
+kubernetes work with objects 
+
+1->pods-> smallest thing in kubernetes that our k8 conncts with
+2->Deployment object->we give command to deployment object to handle number of pods and the container is should create and manage for us 
+   deployment can be paused deleted and rolled back  and they can also be scaled or auto scaled
+
+
+to run a continer and manage by k8 
+
+first create an image --name k8-first-application then run the below command
+
+###   kubectl create deployment first-app --image=k8-first-app deployment.apps/first-app created
