@@ -1,0 +1,2 @@
+suppose we have two remote machine server one and server 2 and only way to connect to the server 1 is by ssh 
+

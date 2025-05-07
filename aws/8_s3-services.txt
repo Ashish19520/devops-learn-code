@@ -1,0 +1,53 @@
+simple storage service
+
+go to s3 bucket create a bucket with a unique name
+
+store data as objects
+region specific
+each element store as a key value pair 
+each object within a bucket is stored as a key value pair
+
+
+we can also make the dynamic links to serve html or any file publically thrugh a url
+
+just go on permissions and remove blockage
+and in properties add enable the static url
+
+#### s3 bucket policies ###3
+json based access control policies that u attach directly to an S3 bucket to manage
+permissions for accessing the bucket and its objects
+
+they allow u to define who can accesss the data and what actions they can perform such asread
+write or delete enabling fine -grained control over the security of ur data stored in s3
+
+
+use aws policy generator to generate a policy
+u get something like this
+
+{
+  "Id": "Policy1746623475003",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1746623470350",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::ashish-bucket-19520/*",
+      "Principal": "*"
+    }
+  ]
+}
+
+
+
+
+############ S3 versioinning#################
+
+properties->buckeet versoning make this enable 
+
+it automatic provides the version and use latest file like index1
+                                                            index 2
+                                                            index 3 
+                                                            it uses versioning like this and if we delete a version file the second latest will take the place

@@ -6,3 +6,7 @@ Richa@Ashish@1234                     --> password
 
 ashish                               ->IAM user
 Dushman@1234  -> given by root  -> Dushman@12345
+
+
+#####  passpharse for office laptop to the dockerhub repositry
+12345

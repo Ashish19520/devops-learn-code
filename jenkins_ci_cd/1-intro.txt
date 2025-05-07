@@ -1,0 +1,39 @@
+the leading opensource automation server, provides hundred of plugins and support building deploying and
+automating task
+
+Jenkins is a server-based automation tool written in Java. It helps developers automate the steps involved in building and deploying applications.
+
+✅ CI/CD Concepts:
+CI (Continuous Integration):
+
+Automatically build and test your code when changes are pushed (e.g., to GitHub).
+
+Catch bugs early.
+
+CD (Continuous Delivery/Deployment):
+
+Automatically deliver or deploy your app to a staging/production environment.
+
+Reduce manual steps and errors.
+ 
+we install jenkins in the docker
+and create yml file and up the container
+
+aade3734991048f69b46664a85b818a8 ###->use this as password
+
+
+go to the host port
+1->http://localhost:8080/
+2-> enter the password that we get from logs ->docker logs jenkins
+3->paste it and install all plugins
+4->
+create a user
+
+username :ashish
+password:1234
+full_name:ashish_dev2
+email:ashishkatariya19520@gmail.com
+
+and then we go into the dashboard of jenkins
+
+

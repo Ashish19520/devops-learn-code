@@ -1,0 +1,30 @@
+this is a file docker copose file which use multiple
+docker run and build commands for multiple container
+
+it does't replace the docker file dockoer-compose is workwith dockerfile
+and good to run multiple container
+
+
+                                servicer continaer 
+                                ___________________
+                                        |
+                         -------------- |----------------
+                        |                               |
+                     published ports            environment variables
+                        |                                |
+                     volumes                          Networks
+
+in yaml file we don;t need to create a network it automatically create the netowek for us and add all network in that newly
+created Network
+
+but u can also create network but then yaml does't crreate the network for us
+## also install the docker compose un ur linux
+
+
+########### starting the servicees with yaml ##########
+
+use 
+#->>## docker-compose up
+        docker-compose up -d  ###run in deattac mode 
+        docker-compose down   ###  this delates all containe and netwrok but don't delete volume to remove volume also add -v
+        docker-compose down -v

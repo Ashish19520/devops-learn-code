@@ -1,0 +1,27 @@
+we create a new job
+by adding job and 
+run on the script shell 
+
+echo "hello world"
+
+to execute a command in the container
+
+we first create a file with .sh extension 
+see the file ->script.sh
+
+then we copy it to the container
+#-->docker cp script.sh jenkins:/tmp/script.sh
+
+then we open the container that run nginx
+#-->docker exec -it jenkins bash
+
+
+and execute the command with thi
+#-->/tmp/script.sh
+
+# use this if the script show some permissin issue
+chmod +x script.sh
+
+
+
+### u can also make the paremitrized job 

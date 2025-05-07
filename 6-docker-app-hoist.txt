@@ -1,0 +1,57 @@
+we are going to host an app
+with mongodb nodejs and reactjs
+
+
+we are going to create three containers for that
+
+first for mongodb
+################ MONGODB ##################333
+
+step 1-> run the command and expose the port 21707 the command pull image of mongo and run the container and  expose it to local machine so we can 
+connect it to the locally
+
+docker run --name mongodb --rm -d -p 27017:27017 mongo:alpine
+
+step-2 ->hosting backend app->now we are running our app in the container make sure where it connect to the db istead if using
+localhost it uses host.docker.internal
+
+and run the container
+#-->docker build -t goals-node
+#--> docker run --name goals-backend --rm  -p 80:80 goals-node
+
+
+step-3 now we are containerizing the frontend react app
+first we create the docker file instead of writing localhost in the base api url
+we write -> host.docker.internal
+and create the build then up the container
+
+###->docker build -t goals-react .
+##-> docker run --name goals-frontend --rm -d -p 3000:3000 goals-react
+
+
+
+############### from here we have two ways either run our app like this or create a network ####
+##-> docker network create goals-net-app
+
+for frontend remember react run on server side not on the container side means serve
+and also for react you have to expose the ports
+and browser is not inur network
+u also don't neeed to add network on the react app
+
+
+
+############ make data presist even after container is stop ############
+
+docker run --name mongodb -v data:/data/db --rm -d --network goals-net mongo
+
+with this we can presist the data in a named volume that store data in the host machine ofcourse we don;t know
+the location and when i start the mongodb container again it will load the data from the named volume
+
+
+############ to add any extra layer of authentication we can use the below command #####################3333
+
+docker run --name mongodb -v data:/data/db --rm -d --network goals-net -e MONGO_INITDB_ROOT_USERNAME=ashish -e MONGO_INITDB_ROOT_PASSWORD=Dushman mongo
+
+
+with the above command we set two env variable username and secret and mongodb is protected now and to use db now we have to add this in the 
+coonection string

@@ -82,3 +82,87 @@ is start refleccting in docker runing container
 
 
 for nodejs specific development container we use nodemon in devdependiceies and change the docker script
+
+
+
+generally volumes are read and write but we can force them to read only by puttin ro after the container app stands for read only
+
+###->>>  docker run -d --rm -p 3000:80 --name feedback-app -v feedback:/app/feedback -v $(pwd):/app:ro feedback-node:volumes
+
+
+
+use command to get the list of the all volumes  
+->#### docker volume ls    
+
+to see information of named volumes use
+
+-->> #### docker volume inspect feedback
+to remove a vlume use ###-> docker volum rm feedback
+use docker volume prune  -> to get rid of all volumes which are not in use
+
+######### ARGUMENTS AND RUNTIME ENVIRONMENT VARIABLES ########
+
+docker support built-time ARGuments and run time ENVironment variables 
+
+we can add env variables in docker file 
+
+like 
+
+ENV PORT 80
+EXPOSE $PORT
+
+also in command when we are going to start the container we can add port like
+
+
+#####->>docker run -d --rm -p 3000:80  --env PORT=8000 --name feedback-app feedback-node:volumes
+
+
+like above we can add multipele variables in it .
+
+we can use -e instead of --env
+-e PRT=5000 -e NAME=ashish
+
+and if u want to read the value from the env file 
+create a .env file in the root of the project and add PORT=4000;
+
+and use the command below
+
+#####->>docker run -d --rm -p 3000:80  --env-file ./.env PORT=8000 --name feedback-app feedback-node:volumes
+                                       ------------------
+                                       ignore the underscores this is to highlight that from now all env variables are going to read fron
+                                        there that is .env file     
+
+##### docker netwerking and communication
+
+3 cases can be there
+
+1-> docker want to access to some api host on WWW
+2->docker container want to communicate with another container
+3-> docker container talk to some services running on our localhost or host machine
+
+
+
+by default container can communicate with world->container -> to WWW without any extra settings
+
+and to communicate with the host machine on some service of some port 
+instead of using ( localhost  -> use ->host.docker.internal    instead of localhost)
+                                       --------------------
+
+for to ci=ommunicate container to container use
+#inspect command to inspect and take ip address of the running container and hit that address on the default port
+
+
+##### container network ####
+we can communicate n number of container to each other just by creating a network
+use command ####--> 
+                    docker run -d --name container-name --network favourites-network image-name
+                                                        ----------------------------
+                                                        here we running the container on a network favourites network
+and we can add n number of container on favourites-network or the network we just create of those containers are on same 
+network can talk to each other
+
+to create a network use command    ####--> docker network create favourites-network
+to inspect the netwoek     use #####->>>###  docker network ls
+
+and use the name of container to communicate each other instead of ip or host.docker.internal
+                    ---------                                            --------------------
