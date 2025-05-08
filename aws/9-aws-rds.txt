@@ -1,0 +1,14 @@
+RDS->relational database service
+
+
+aws rds as a managed database service that simplifies database setup, operations and scaling,
+
+purpose: handling administrative task like backups, patching, monitoring and scaling 
+
+u can use it in a container like 
+
+create a db and take the admin host string
+database-1.c1ceygo60jo5.eu-north-1.rds.amazonaws.com
+
+and connect to the docker like this not in all case but the case we reading on
+sudo docker run --rm -p 80:3000 -e DB_HOST="database-1.c1ceygo60jo5.eu-north-1.rds.amazonaws.com" -e DB_PASSWORD="000055559999" -e  DB_USER="admin" -d philippaul/node-mysql-app:02

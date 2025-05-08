@@ -27,3 +27,4 @@ ssh -i your-key-file.pem ec2-user@<public-ip-address>
 
 ssh -i Downloads/ashishweb-server.pem ec2-user@56.228.14.198   ->this will work
 
+
